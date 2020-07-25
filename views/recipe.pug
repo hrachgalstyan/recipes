@@ -1,0 +1,84 @@
+extends base
+include _reviewCard
+
+mixin overviewBox(label, text, icon)
+    .overview-box__detail
+        svg.overview-box__icon
+            use(xlink:href=`/img/icons.svg#icon-${icon}`)
+        span.overview-box__label= label
+        span.overview-box__text= text
+
+block content
+    section.section-header
+        .header__hero
+            .header__hero-overlay &nbsp;
+            img.header__hero-img(src=`/img/recipes/${recipe.image}`, alt=`${recipe.name}`)
+
+        .heading-box
+            h1.heading-primary
+                span= `${recipe.name}`
+            .heading-box__group
+                .heading-box__detail
+                    svg.heading-box__icon
+                        use(xlink:href='/img/icons.svg#icon-clock')
+                    span.heading-box__text= `${recipe.time} րոպե`
+                .heading-box__detail
+                    svg.heading-box__icon
+                        use(xlink:href='/img/icons.svg#icon-map-pin')
+                    span.heading-box__text Հայկական
+
+    section.section-description
+        .overview-box
+            div
+                .overview-box__group
+                    h2.heading-secondary.ma-bt-lg Բնութագիր
+
+                    - const date = recipe.createdAt.toLocaleString('en-us', {day: 'numeric', month: 'long', year: 'numeric'})
+                    +overviewBox('Ամսաթիվ։ ', date, 'calendar')
+                    +overviewBox('Բարդություն։ ', recipe.difficulty, 'trending-up')
+                    +overviewBox('Քանակ', `${recipe.people} people`, 'user')
+                    +overviewBox('Վարկանիշ', `${recipe.ratingsAverage} / 5`, 'star')
+
+                .overview-box__group
+                    h2.heading-secondary.ma-bt-lg Տեղադրող
+
+                    .overview-box__detail
+                        img.overview-box__img(src=`/img/recipes/${recipe.image}`, alt=`${recipe.name}`)
+                        //- - if (guide.role === 'lead-guide')
+                        //-     span.overview-box__label Lead Guide
+                        //- - if (guide.role === 'guide')
+                        //-     span.overview-box__label recipe Guide
+                        span.overview-box__text= recipe.name
+
+        .description-box
+            h2.heading-secondary.ma-bt-lg= `${recipe.name}-ի պատրաստման եղանակը`
+            - const paragraphs= recipe.description.split('\n');
+            each p in paragraphs
+                p.description__text= p
+
+    //- section.section-pictures
+    //-     each img, i in recipe.images
+    //-         .picture-box
+    //-             img.picture-box__img(src=`/img/recipes/${img}`, alt=`The Park Camper recipe ${i + 1}` class=`picture-box__img--${i + 1}`)
+
+    //- section.section-map
+    //-     #map(data-locations=`${JSON.stringify(recipe.locations)}`)
+
+    //- section.section-reviews
+    //-     .reviews
+    //-         each review in recipe.reviews
+    //-             +reviewCard(review)
+
+    section.section-cta
+        .cta
+            .cta__img.cta__img--logo
+                img(src='/img/logo-white.png', alt='Narecipes logo')
+            img.cta__img.cta__img--1(src=`/img/recipes/${recipe.image}`, alt='recipe Picture')
+            .cta__content
+                h2.heading-secondary What are you waiting for?
+                p.cta__text= `${recipe.time} days. 1 adventure. Infinite memories. Make it yours today!`
+
+                if user
+                    button.btn.btn--green.span-all-rows#book-recipe(data-recipe-id=`${recipe.id}`) Book recipe now!
+                else 
+                    a.btn.btn--green.span-all-rows(href='/login') Log in to book recipe
