@@ -7,7 +7,6 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
-const winston = require('winston');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -17,30 +16,6 @@ const reviewRouter = require(`${__dirname}/routes/reviewRoutes`);
 const viewRouter = require(`${__dirname}/routes/viewRoutes`);
 
 const app = express();
-
-const consoleTransport = new winston.transports.Console();
-
-const myWinstonOptions = {
-    transports: [consoleTransport]
-}
-const logger = new winston.createLogger(myWinstonOptions)
-
-function logRequest(req, res, next) {
-    logger.info(req.body);
-    logger.info(req, res);
-    next()
-}
-
-app.use(logRequest);
-
-app.use(function(req,res,next) {
-  res.setHeader("Accept", "application/json");
-  res.setHeader("X-Requested-With", "XMLHttpRequest");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
-  res.setHeader("Access-Control-Allow-Methods","GET, POST, PATCH, PUT, DELETE, OPTIONS");
-  next();
-})
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
@@ -68,10 +43,10 @@ app.use(
     limit: '50kb',
   })
 );
-app.use(express.urlencoded({
-  extended: true,
-  limit: '10kb'
-}));
+// app.use(express.urlencoded({
+//   extended: true,
+//   limit: '10kb'
+// }));
 app.use(cookieParser());
 
 // Data sanitization against NOSQl query injection
