@@ -26,7 +26,8 @@ const myWinstonOptions = {
 const logger = new winston.createLogger(myWinstonOptions)
 
 function logRequest(req, res, next) {
-    logger.info(req.url)
+    logger.info(req.body);
+    logger.info(req, res);
     next()
 }
 
