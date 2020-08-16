@@ -52,24 +52,32 @@ exports.login = catchAsync(async (req, res, next) => {
     password
   } = req.body;
 
-  // Check if email and password exist
+  // 1) Check if email and password exist
   if (!email || !password) {
     return next(new AppError('Please provide email and password!', 400));
   }
-
-  // Check if user exists && password is correct
+  // 2) Check if user exists && password is correct
   const user = await User.findOne({
-    email,
+    email
   }).select('+password');
-  const correct = await user.correctPassword(password, user.password);
 
-  if (!user || !correct) {
+  if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new AppError('Incorrect email or password', 401));
   }
 
-  // If everything ok, send token to client
+  // 3) If everything ok, send token to client
   createSendToken(user, 200, res);
 });
+
+exports.logout = (req, res) => {
+  res.cookie('jwt', 'loggedout', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true
+  });
+  res.status(200).json({
+    status: 'success'
+  });
+};
 
 exports.protect = catchAsync(async (req, res, next) => {
   // Getting token and check of it's there
@@ -110,6 +118,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     );
   }
   req.user = currentUser;
+  res.locals.user = currentUser;
   return next();
 });
 
@@ -142,16 +151,6 @@ exports.isLoggedIn = async (req, res, next) => {
     }
   }
   next();
-};
-
-exports.logout = (req, res) => {
-  res.cookie('jwt', 'loggedout', {
-    expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true
-  });
-  res.status(200).json({
-    status: 'success'
-  });
 };
 
 exports.restrictTo = (...roles) => {

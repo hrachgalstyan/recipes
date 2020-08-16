@@ -23,6 +23,7 @@ const recipeSchema = new mongoose.Schema({
     default: 4.5,
     min: [1, 'Վարկանիշը պետք է մեծ լինի 1.0-ից'],
     max: [5, 'Վարկանիշը պետք է փոքր լինի 5.0-ից'],
+    set: val => Math.round(val * 10) / 10,
   },
   ratingsQuantity: Number,
   time: {

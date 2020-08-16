@@ -79,6 +79,10 @@ body {
   text-align: right !important;
 }
 
+.center {
+  text-align: center !important;
+}
+
 .line {
   margin: 6rem 0;
   width: 100%;
@@ -113,7 +117,7 @@ body {
 }
 
 .heading-secondary {
-  font-size: 2.25rem;
+  font-size: 2rem;
   text-transform: uppercase;
   font-weight: 700;
   background-image: -webkit-gradient(linear,
@@ -136,7 +140,7 @@ body {
       from(#ff7730),
       to(#eb4d4b));
   background-image: linear-gradient(to right, #ff7730, #eb4d4b);
-  font-size: 3.5rem;
+  font-size: 3rem;
 }
 
 .heading-primary,
@@ -225,6 +229,18 @@ body {
 
 .btn--white::after {
   background-color: #fff;
+}
+
+.btn--red {
+  background-color: red;
+  color: #fff;
+  margin-top: 50px;
+}
+
+.btn--red::after,
+.btn--red:focus {
+  background-color: red;
+  margin-top: 50px;
 }
 
 .btn--green {
@@ -1178,7 +1194,7 @@ body {
       from(#7dd56f),
       to(#28b487));
   background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
-  opacity: 0.7;
+  opacity: 0.4;
 }
 
 .card__picture-img {
