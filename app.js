@@ -7,6 +7,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const winston = require('winston');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -16,6 +17,20 @@ const reviewRouter = require(`${__dirname}/routes/reviewRoutes`);
 const viewRouter = require(`${__dirname}/routes/viewRoutes`);
 
 const app = express();
+
+const consoleTransport = new winston.transports.Console();
+
+const myWinstonOptions = {
+    transports: [consoleTransport]
+}
+const logger = new winston.createLogger(myWinstonOptions)
+
+function logRequest(req, res, next) {
+    logger.info(req.url)
+    next()
+}
+
+app.use(logRequest);
 
 app.use(function(req,res,next) {
   res.setHeader("Accept", "application/json");
