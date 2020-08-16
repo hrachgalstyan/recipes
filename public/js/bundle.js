@@ -8270,7 +8270,7 @@ function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://127.0.0.1:5000/api/v1/users/login',
+              url: 'https://baghadratomser.herokuapp.com/api/v1/users/login',
               data: {
                 email: email,
                 password: password
@@ -8325,7 +8325,7 @@ function () {
             _context2.next = 3;
             return (0, _axios.default)({
               method: 'GET',
-              url: 'http://127.0.0.1:5000/api/v1/users/logout'
+              url: 'https://baghadratomser.herokuapp.com/api/v1/users/logout'
             });
 
           case 3:
@@ -8387,7 +8387,7 @@ function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://127.0.0.1:5000/api/v1/users/signup',
+              url: 'https://baghadratomser.herokuapp.com/api/v1/users/signup',
               data: {
                 name: name,
                 email: email,
@@ -8873,7 +8873,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62230" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62613" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
