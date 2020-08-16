@@ -6,7 +6,6 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
-var cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 const AppError = require('./utils/appError');
@@ -17,20 +16,6 @@ const reviewRouter = require(`${__dirname}/routes/reviewRoutes`);
 const viewRouter = require(`${__dirname}/routes/viewRoutes`);
 
 const app = express();
-
-app.use(cors());
-
-const { createProxyMiddleware } = require('http-proxy-middleware');
-
-app.use('/api', createProxyMiddleware({ 
-    target: 'http://localhost:3000/, https://baghadratomser.herokuapp.com/', //original url
-    changeOrigin: true, 
-    //secure: false,
-    onProxyRes: function (proxyRes, req, res) {
-      proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-    }
-}))
-
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
