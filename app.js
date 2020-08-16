@@ -23,7 +23,7 @@ app.use(cors());
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 app.use('/api', createProxyMiddleware({ 
-    target: 'http://localhost:3000/', //original url
+    target: 'http://localhost:3000/, https://baghadratomser.herokuapp.com/', //original url
     changeOrigin: true, 
     //secure: false,
     onProxyRes: function (proxyRes, req, res) {
