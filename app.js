@@ -24,9 +24,9 @@ const app = express();
 // Serving static files
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static((path.join(__dirname, 'client/build'))));
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-// })
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+})
 
 // SET SECURITY HTTP HEADERS
 app.use(helmet());
