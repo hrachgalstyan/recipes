@@ -11,13 +11,25 @@ export default function login() {
 
     const data = JSON.stringify({email,password});
     console.log(data);
-    axios.post('api/v1/users/login', data)
-      .then(response => { 
-        console.log(response.data)
+    // axios.post('https://baghadratomser.herokuapp.com/api/v1/users/login', data)
+    //   .then(response => { 
+    //     console.log(response.data)
+    //   })
+    //   .catch(error => {
+    //       console.log(error.response);
+    //   });
+    axios({
+      url: '/api/v1/users/login',
+      method: 'POST',
+      data: {
+        email,
+        password
+      }
+    })
+      .then((response) => {
+        console.log(response.data);
       })
-      .catch(error => {
-          console.log(error.response);
-      });
+      .catch((err) => console.log(err.response));
     }
 
   return (
