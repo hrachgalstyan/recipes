@@ -1,26 +1,55 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Home, Recipes, Advices, Shop, Login, SignUp, About, Partners, Contact, Privacy, Error } from './pages';
+import { Navbar, Footer } from './components';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Switch>
+        {/* Navbar Routes */}
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/recipes">
+          <Recipes />
+        </Route>
+        <Route path="/advices">
+          <Advices />
+        </Route>
+        <Route path="/shop">
+          <Shop />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/signup">
+          <SignUp />
+        </Route>
+
+        {/* Footer Routes */}
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/partners">
+          <Partners />
+        </Route>
+        <Route path="/contact">
+          <Contact />
+        </Route>
+        <Route path="/privacy">
+          <Privacy />
+        </Route>
+
+        {/* Error Route */}
+        <Route path="*">
+          <Error />
+        </Route>
+      </Switch>
+      <Footer />
+    </Router>
   );
-}
+};
 
 export default App;

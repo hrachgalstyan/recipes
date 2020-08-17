@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import RecipesProvider from './context/recipes';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <RecipesProvider>
+      <App />
+    </RecipesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
