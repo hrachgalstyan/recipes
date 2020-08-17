@@ -19,7 +19,10 @@ export default function login() {
       }
     })
       .then((response) => {
-        localStorage.setItem("user", JSON.stringify(response.data.data.user));
+        const token = response.data.token;
+        const name = response.data.data.user.name;
+        localStorage.setItem("jwt", token);
+        localStorage.setItem("name", name)
         showAlert('success', 'Logged in successfully!');
         window.setTimeout(() => {
           window.location.assign('/');

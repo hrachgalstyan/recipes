@@ -10,7 +10,7 @@ export default function RecipesProvider({ children }) {
     React.useEffect(() => {
       setLoading(true);
       axios({
-        url: 'api/v1/recipes',
+        url: 'api/v1/recipes?page=1&limit=4',
         method: 'GET',
       })
         .then((response) => {

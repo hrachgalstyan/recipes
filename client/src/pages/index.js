@@ -4,6 +4,7 @@ import Advices from "./advices";
 import Shop from "./shop";
 import Login from "./login";
 import SignUp from "./signup";
+import Account from "./account";
 
 import About from "./about";
 import Partners from "./partners";
@@ -13,4 +14,4 @@ import Privacy from "./privacy";
 
 import Error from "./error";
 
-export {Home, Recipes, Advices, Shop, Login, SignUp, About, Partners, Contact, Privacy, Error};
+export {Home, Recipes, Advices, Shop, Login, SignUp, About, Account, Partners, Contact, Privacy, Error};

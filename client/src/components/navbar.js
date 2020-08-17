@@ -13,7 +13,7 @@ export default function Navbar() {
     navbar.classList.remove('show');
   };
 
-  if(user) {
+  if(user !== null) {
     return (
       <nav className="navbar navbar-expand-lg navbar-light px-4 px-sm-5 d-flex" style={{zIndex: '100'}}>
         <Link className="navbar-brand" to="/" onClick={handleHide}>

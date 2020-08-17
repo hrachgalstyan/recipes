@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Recipes, Advices, Shop, Login, SignUp, About, Partners, Contact, Privacy, Error } from './pages';
+import { Home, Recipes, Advices, Shop, Login, SignUp, Account, About, Partners, Contact, Privacy, Error } from './pages';
 import { Navbar, Footer } from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -26,6 +26,9 @@ function App() {
         </Route>
         <Route path="/signup">
           <SignUp />
+        </Route>
+        <Route path="/me">
+          <Account />
         </Route>
 
         {/* Footer Routes */}

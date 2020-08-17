@@ -4,7 +4,6 @@ import Loading from "../components/loading";
 
 export default function Recipes() {
   const {recipes, loading} = React.useContext(RecipesContext);
-  console.log(recipes);
   if(loading){
     return (
       <Loading />

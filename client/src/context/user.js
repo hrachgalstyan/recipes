@@ -3,15 +3,17 @@ import React from "react";
 export const UserContext = React.createContext();
 
 export default function UserProvider({ children }) {
-    const [user, setUser] = React.useState({});
+    const [user, setUser] = React.useState(null);
 
     React.useEffect(() => {
-      const user = JSON.parse(localStorage.getItem('user'));
-      if(user){
-        setUser(user);
+      const token = localStorage.getItem('jwt');
+      const name = localStorage.getItem('name');
+      if(token && name) {
+        setUser({token, name});
       } else {
         setUser(null);
       }
+    return () => {};
     }, []);
 
     return (
