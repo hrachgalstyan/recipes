@@ -23,10 +23,6 @@ const app = express();
 // 1) GLOBAL MIDDLEWARES
 // Serving static files
 // app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static('client/build'));
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-// })
 
 // SET SECURITY HTTP HEADERS
 app.use(helmet());
@@ -77,6 +73,11 @@ app.use((req, res, next) => {
 app.use('/api/v1/recipes', recipeRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
+
+app.use(express.static('client/build'));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
