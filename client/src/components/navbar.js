@@ -2,7 +2,6 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import {FaAlignRight} from 'react-icons/fa'
 import image from '../assets/Recipes.svg';
-import { UserContext } from "../context/user";
 
 export default function navbar() {
 

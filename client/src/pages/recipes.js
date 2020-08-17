@@ -34,7 +34,7 @@ export default function Recipes() {
                 <div className="card__header">
                   <div className="card__picture">
                     <div className="card__picture-overlay">&nbsp;</div>
-                    <img className="card__picture-img" src="https://baghadratomser.herokuapp.com/img/recipes/recipes-1.jpg" alt={item.name} />
+                    <img className="card__picture-img" src="https://i.picsum.photos/id/412/250/250.jpg?hmac=MMv_Qhe3amX1GkZ00ns6ObqgqB7gH1wRyHvFQKkr0c0" alt={item.name} />
                   </div>
                   <h3 className="heading-tertirary">
                     {item.name}

@@ -10,11 +10,11 @@ export default function RecipesProvider({ children }) {
     React.useEffect(() => {
       setLoading(true);
       axios({
-        url: '/api/v1/recipes',
+        url: 'https:/baghadratomser.herokuapp.com/api/v1/recipes',
         method: 'GET',
       })
         .then((response) => {
-          console.log(response.data.data);
+          setRecipes(response.data.data.data);
           setLoading(false);
         })
         .catch((err) => console.log(err.response));

@@ -18,7 +18,6 @@ export default function login() {
       }
     })
       .then((response) => {
-        console.log(response.data.data.user);
         localStorage.setItem("user", JSON.stringify(response.data.data.user));
       })
       .catch((err) => console.log(err.response));
