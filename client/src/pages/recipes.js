@@ -45,19 +45,6 @@ export default function Recipes() {
                 <div className="card__details">
                   <h6 className="card__sub-heading">Բարդությունը։ {item.difficulty}</h6>
                   <p className="card__text">Այս բաղադրատոմսը համեղ է և ձեր օրը սկսելու հիանալի միջոց:</p>
-
-                  <div className="card__data">
-                    <svg class="card__icon">
-                      <use xlinkHref="/img/icons.svg#icon-map-pin"></use>
-                      <span>Հայկական</span>
-                    </svg>
-                  </div>
-                  <div className="card__data">
-                    <svg className="card__icon">
-                      <use xlinkHref="/img/icons.svg#icon-map-pin"></use>
-                      <span>Հայկական</span>
-                    </svg>
-                  </div>
                 </div>
               </div>
             </div>

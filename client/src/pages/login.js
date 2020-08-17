@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import image1 from '../assets/login.svg'
 import axios from 'axios';
+import {showAlert} from '../components/index';
 
 export default function login() {
   const handleSubmit = async (event) => {
@@ -19,8 +20,15 @@ export default function login() {
     })
       .then((response) => {
         localStorage.setItem("user", JSON.stringify(response.data.data.user));
+        showAlert('success', 'Logged in successfully!');
+        window.setTimeout(() => {
+          window.location.assign('/');
+        }, 1000);
       })
-      .catch((err) => console.log(err.response));
+      .catch((err) => {
+        console.log(err.response);
+        showAlert('error', err.response.data.message);
+      });
     }
 
   return (

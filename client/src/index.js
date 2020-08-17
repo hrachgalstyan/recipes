@@ -8,13 +8,11 @@ import RecipesProvider from './context/recipes';
 import UserProvider from './context/user';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <UserProvider>
-      <RecipesProvider>
-        <App />
-      </RecipesProvider>
-    </UserProvider>
-  </React.StrictMode>,
+  <UserProvider>
+    <RecipesProvider>
+      <App />
+    </RecipesProvider>
+  </UserProvider>,
   document.getElementById('root')
 );
 

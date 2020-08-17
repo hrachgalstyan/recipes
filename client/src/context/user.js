@@ -2,18 +2,16 @@ import React from "react";
 
 export const UserContext = React.createContext();
 
-export default function UserProvider (props) {
+export default function UserProvider({ children }) {
     const [user, setUser] = React.useState({});
 
     React.useEffect(() => {
       const user = JSON.parse(localStorage.getItem('user'));
       if(user){
-        console.log(user);
         setUser(user);
       } else {
-        setUser({});
+        setUser(null);
       }
-      return () => {};
     }, []);
 
     return (
@@ -22,7 +20,7 @@ export default function UserProvider (props) {
             user
         }}
         >
-        {props.children}
+        {children}
         </UserContext.Provider>
     );
 }

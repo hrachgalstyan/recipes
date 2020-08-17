@@ -10,7 +10,7 @@ export default function RecipesProvider({ children }) {
     React.useEffect(() => {
       setLoading(true);
       axios({
-        url: 'https://baghadratomser.herokuapp.com/api/v1/recipes',
+        url: 'api/v1/recipes',
         method: 'GET',
       })
         .then((response) => {
