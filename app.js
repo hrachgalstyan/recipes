@@ -17,12 +17,16 @@ const viewRouter = require(`${__dirname}/routes/viewRoutes`);
 
 const app = express();
 
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'pug');
+// app.set('views', path.join(__dirname, 'views'));
 
 // 1) GLOBAL MIDDLEWARES
 // Serving static files
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(('client/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+})
 
 // SET SECURITY HTTP HEADERS
 app.use(helmet());
@@ -43,10 +47,10 @@ app.use(
     limit: '50kb',
   })
 );
-// app.use(express.urlencoded({
-//   extended: true,
-//   limit: '10kb'
-// }));
+app.use(express.urlencoded({
+  extended: true,
+  limit: '10kb'
+}));
 app.use(cookieParser());
 
 // Data sanitization against NOSQl query injection
@@ -69,7 +73,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use('/', viewRouter);
+// app.use('/', viewRouter);
 app.use('/api/v1/recipes', recipeRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
