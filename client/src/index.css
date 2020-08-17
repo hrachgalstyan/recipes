@@ -246,7 +246,7 @@ a {
 }
 
 /******************** CARD **********************/
-
+/* 
 .card {
   border-radius: 3px !important;
   overflow: hidden !important;
@@ -370,4 +370,4 @@ a {
   justify-self: end !important;
   -ms-flex-item-align: center !important;
   align-self: center !important;
-}
+} */
