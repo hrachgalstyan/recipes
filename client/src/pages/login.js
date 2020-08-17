@@ -9,15 +9,6 @@ export default function login() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    const data = JSON.stringify({email,password});
-    console.log(data);
-    // axios.post('https://baghadratomser.herokuapp.com/api/v1/users/login', data)
-    //   .then(response => { 
-    //     console.log(response.data)
-    //   })
-    //   .catch(error => {
-    //       console.log(error.response);
-    //   });
     axios({
       url: '/api/v1/users/login',
       method: 'POST',
@@ -27,7 +18,8 @@ export default function login() {
       }
     })
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data.data.user);
+        localStorage.setItem("user", JSON.stringify(response.data.data.user));
       })
       .catch((err) => console.log(err.response));
     }

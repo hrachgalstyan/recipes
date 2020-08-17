@@ -5,12 +5,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipesProvider from './context/recipes';
+import UserProvider from './context/user';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RecipesProvider>
-      <App />
-    </RecipesProvider>
+    <UserProvider>
+      <RecipesProvider>
+        <App />
+      </RecipesProvider>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

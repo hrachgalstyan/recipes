@@ -2,9 +2,12 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import {FaAlignRight} from 'react-icons/fa'
 import image from '../assets/Recipes.svg';
+import { UserContext } from "../context/user";
 
-function navbar() {
+export default function navbar() {
 
+  // const {user} = React.useContext(UserContext);
+  // console.log(user);
   function handleHide(){
     const navbar = document.getElementById('navbarText');
     navbar.classList.remove('show');
@@ -40,5 +43,3 @@ function navbar() {
       </nav>
   )
 }
-
-export default navbar;

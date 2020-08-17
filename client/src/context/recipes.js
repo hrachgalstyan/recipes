@@ -9,10 +9,15 @@ export default function RecipesProvider({ children }) {
 
     React.useEffect(() => {
       setLoading(true);
-      axios.get(`/api/v1/recipes`).then(response => {
-        setRecipes(response.data);
-        setLoading(false);
-      });
+      axios({
+        url: '/api/v1/recipes',
+        method: 'GET',
+      })
+        .then((response) => {
+          console.log(response.data.data);
+          setLoading(false);
+        })
+        .catch((err) => console.log(err.response));
       return () => {};
     }, []);
 
