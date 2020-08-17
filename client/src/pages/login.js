@@ -11,12 +11,12 @@ export default function login() {
 
     const data = JSON.stringify({email,password});
     console.log(data);
-    axios.post('/login', data)
+    axios.post('api/v1/users/login', data)
       .then(response => { 
         console.log(response.data)
       })
       .catch(error => {
-          console.log(error.response.data);
+          console.log(error.response);
       });
     }
 
