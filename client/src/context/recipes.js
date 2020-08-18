@@ -15,7 +15,9 @@ export default function RecipesProvider({ children }) {
       })
         .then((response) => {
           setRecipes(response.data.data.data);
-          setLoading(false);
+          setTimeout(function () {
+            setLoading(false);
+          }, 1000);
         })
         .catch((err) => console.log(err.response));
       return () => {};

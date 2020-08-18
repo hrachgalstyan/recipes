@@ -245,6 +245,15 @@ a {
   background-color: #55c57a !important;
 }
 
+.btn--red {
+  background-color: rgba(240, 52, 52, 0.8) !important;
+  color: #fff !important;
+}
+
+.btn--red::after {
+  background-color: rgba(240, 52, 52, 0.8) !important;
+}
+
 /******************** CARD **********************/
 /* 
 .card {

@@ -32,7 +32,6 @@ export default function login() {
         }, 1500);
       })
       .catch((err) => {
-        console.log(err.response);
         document.querySelector('.submit-btn').textContent = 'Մուտք';
         ShowAlert('error', `❌ ${err.response.data.message}`);
       });

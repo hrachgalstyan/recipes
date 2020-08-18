@@ -16,7 +16,6 @@ export default function Account() {
     })
       .then((response) => {
         setMe(response.data.data.data);
-        console.log(response.data.data.data);
       })
       .catch((err) => {
         console.log(err.response);
