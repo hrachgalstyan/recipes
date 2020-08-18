@@ -28,7 +28,7 @@ export default function signup() {
         const name = response.data.data.user.name;
         localStorage.setItem("jwt", token);
         localStorage.setItem("name", name)
-        ShowAlert('success', `Բարև ${name} ջան`);
+        ShowAlert('success', `😊 Բարև ${name} ջան`);
         window.setTimeout(() => {
           window.location.assign('/');
         }, 1000);
