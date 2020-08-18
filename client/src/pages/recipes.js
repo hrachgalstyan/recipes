@@ -1,7 +1,6 @@
 import React from 'react'
 import { RecipesContext } from "../context/recipes";
-import Loading from "../components/loading";
-import defaultImg from '../assets/kinder.jpg';
+import Loading from "../components/Loading";
 
 export default function Recipes() {
   const {recipes, loading} = React.useContext(RecipesContext);
@@ -20,11 +19,11 @@ export default function Recipes() {
               <div className="card">
                 {/* header */}
                 <div className="view overlay">
-                    <img className="card-img-top" src={defaultImg} alt={item.name} />
+                    <img className="card-img-top" src="../assets/recipes/recipes-1.jpg" alt={item.name} />
                 </div>
 
                 <div className="card-body">
-                  <h4 className="card-title">{item.name}</h4>
+                  {/* <h4 className="card-title">{item.name}</h4> */}
                   <p className="card-text">Some quick example text to build on the card title.</p>
                   <button className="btn btn--green" type="button">Details</button>
                 </div>

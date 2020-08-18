@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 import {Link} from 'react-router-dom';
-import {FaAlignRight} from 'react-icons/fa'
-import image from '../assets/Recipes.svg';
+import {FaAlignRight} from 'react-icons/fa';
 import {UserContext} from '../context/user';
+import image from '../assets/Recipes.svg';
 import defaultImg from '../assets/default.jpg';
 
 export default function Navbar() {
@@ -12,6 +12,12 @@ export default function Navbar() {
     const navbar = document.getElementById('navbarText');
     navbar.classList.remove('show');
   };
+
+  async function logOut() {
+    localStorage.removeItem('name');
+    localStorage.removeItem('jwt');
+    window.location.assign('/');
+  }
 
   if(user !== null) {
     return (
@@ -33,9 +39,16 @@ export default function Navbar() {
             <li className="nav-item px-3 py-2 my-auto">
               <Link className="nav-link text-center" to="/shop" style={{fontSize: "18px", color: "rgba(0, 0, 0, 0.8)", opacity: "0.8"}} onClick={handleHide}>Խանութ</Link>
             </li>
-            <li className="nav-item pl-lg-3 py-2 my-auto d-flex justify-content-center align-items-center">
-              <img src={defaultImg} className="img-fluid rounded-circle" width="40px" height="40px" alt='default' />
-              <Link className="nav-link text-center pl-3" to="/me" style={{fontSize: "18px", color: "rgba(0, 0, 0, 0.8)", opacity: "0.8"}} onClick={handleHide}>{user.name}</Link>
+            <li className="nav-item-dropdown dropdown pl-lg-3 py-2 my-auto d-flex justify-content-center align-items-center">
+              <span className="nav-link dropdown-toggle d-flex justify-content-center align-items-center" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src={defaultImg} className="img-fluid rounded-circle" width="40px" height="40px" alt='default' />
+                <p className="nav-link pl-3 text-center">{user.name}</p>
+              </span>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <Link className="dropdown-item p-2" to="/me">Իմ հաշիվը</Link>
+                <div className="dropdown-divider"></div>
+                <button className="dropdown-item p-2" type="button" onClick={logOut}>Դուրս գալ</button>
+              </div>
             </li>
           </ul>
         </div>

@@ -1,8 +1,9 @@
-import React from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
+import {ShowAlert} from '../components';
 
 export default function Account() {
-  const [me, setMe] = React.useState(null);
+  const [me, setMe] = React.useState({});
 
   React.useEffect(() => {
     const token = localStorage.getItem('jwt');
@@ -15,6 +16,7 @@ export default function Account() {
     })
       .then((response) => {
         setMe(response.data.data.data);
+        console.log(response.data.data.data);
       })
       .catch((err) => {
         console.log(err.response);
@@ -22,9 +24,17 @@ export default function Account() {
       });
     return () => {};
   }, []);
-  return (
-    <div>
-      my account
-    </div>
-  )
+  if(me !== null){
+    return (
+      <>
+      <div>{me.name}</div>
+      <div>{me.role}</div>
+      </>
+    )
+  } else {
+    ShowAlert('error', '❌ Դուք մուտք չեք գործել:');
+    setTimeout(function () {
+      window.location.assign('/');
+    }, 1500);
+  }
 }

@@ -1,7 +1,7 @@
 /* eslint-disable */
 import axios from 'axios';
 import {
-  showAlert
+  ShowAlert
 } from './alert';
 
 // type is either 'password' or 'data'
@@ -19,9 +19,9 @@ export const updateSettings = async (data, type) => {
     });
 
     if (res.data.status === 'success') {
-      showAlert('success', `${type.toUpperCase()} updated successfully!`);
+      ShowAlert('success', `${type.toUpperCase()} updated successfully!`);
     }
   } catch (err) {
-    showAlert('error', err.response.data.message);
+    ShowAlert('error', err.response.data.message);
   }
 };
