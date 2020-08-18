@@ -19,7 +19,7 @@ export default function Recipes() {
               <div className="card">
                 {/* header */}
                 <div className="view overlay">
-                    <img className="card-img-top" src="../assets/recipes/recipes-1.jpg" alt={item.name} />
+                    <img className="card-img-top" src={require(`../assets/recipes/${item.image}`)} alt={item.name} />
                 </div>
 
                 <div className="card-body">
