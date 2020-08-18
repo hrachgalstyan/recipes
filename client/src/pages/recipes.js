@@ -1,6 +1,6 @@
 import React from 'react'
 import { RecipesContext } from "../context/recipes";
-import Loading from "../components/Loading";
+import Loading from "../components/loading";
 
 export default function Recipes() {
   const {recipes, loading} = React.useContext(RecipesContext);

@@ -1,5 +1,5 @@
-import Navbar from './Navbar';
-import Footer from './Footer';
-import {ShowAlert} from './ShowAlert';
+import Navbar from './navbar';
+import Footer from './footer';
+import {ShowAlert} from './alert';
 
 export {Navbar, Footer, ShowAlert};
