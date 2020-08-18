@@ -44,7 +44,7 @@ export default function Services() {
       <div className="row text-center">
         {services.map((item, index) => {
           return(
-            <div key={index} className="col-lg-4 col-md-6 col-sm-6 col-xs-12 col-12 my-5">
+            <div key={index} className="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6 my-5">
               <span style={{fontSize: "70px", color: "var(--mainGreen)"}}>{item.icon}</span>
               <h4>{item.title}</h4>
               <p className="py-3 w-75 mx-auto">{item.description}</p>
