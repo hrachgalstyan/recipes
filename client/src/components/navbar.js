@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {FaAlignRight} from 'react-icons/fa';
 import {UserContext} from '../context/user';
+import {ShowAlert} from './alert';
 import image from '../assets/Recipes.svg';
 import defaultImg from '../assets/default.jpg';
 
@@ -16,12 +17,15 @@ export default function Navbar() {
   async function logOut() {
     localStorage.removeItem('name');
     localStorage.removeItem('jwt');
-    window.location.assign('/');
+    ShowAlert('error', `😊 Մենք կսպասենք քեզ։`)
+    window.setTimeout(() => {
+      window.location.assign('/');
+    }, 1500);
   }
 
   if(user !== null) {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light px-4 d-flex" style={{zIndex: '100'}}>
+      <nav className="navbar navbar-expand-lg navbar-light px-4 mx-lg-5 d-flex" style={{zIndex: '100'}}>
         <Link className="navbar-brand" to="/" onClick={handleHide}>
           <img src={image} width="200px" alt="Recipes.am" />
         </Link>
@@ -65,7 +69,7 @@ export default function Navbar() {
     )
   } else {
       return (
-        <nav className="navbar navbar-expand-lg navbar-light px-4 d-flex" style={{zIndex: '100'}}>
+        <nav className="navbar navbar-expand-lg navbar-light px-4 mx-lg-5 d-flex" style={{zIndex: '100'}}>
           <Link className="navbar-brand" to="/" onClick={handleHide}>
             <img src={image} width="200px" alt="Recipes.am" />
           </Link>

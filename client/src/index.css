@@ -261,6 +261,11 @@ a {
   width: 2rem !important;
   fill: #55c57a !important;
 }
+
+.footer-details {
+  background: #55c57a !important;
+}
+
 /* 
 .card {
   border-radius: 3px !important;

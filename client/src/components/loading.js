@@ -1,8 +1,8 @@
 import React from "react"
-import food from '../assets/loading.gif'
+import food from '../assets/loading.svg'
 
 export default function Loading() {
-  return <div className="container mw-50 d-flex justify-content-center align-items-center">
-      <img src={food} alt="Loading..." className="img-fluid mw-50" width="300" height="300" />
+  return <div className="container d-flex justify-content-center mx-auto">
+      <img src={food} alt="Loading..." className="img-fluid my-5" width="150" height="150" />
   </div>
 }
