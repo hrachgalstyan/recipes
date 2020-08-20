@@ -15,6 +15,7 @@ export default function RecipesProvider({ children }) {
       })
         .then((response) => {
           setRecipes(response.data.data.data);
+          console.log(response.data.data.data);
           setTimeout(function () {
             setLoading(false);
           }, 1000);

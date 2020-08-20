@@ -75,10 +75,14 @@ recipeSchema.pre(/^find/, function (next) {
     select: '-__v -passwordChangedAt'
   });
   next();
-})
+});
 
 // DOCUMENT MIDDLEWARE: runs before .save() and .create()
 recipeSchema.pre('save', function (next) {
+  this.populate({
+    path: 'author',
+    select: '-__v -passwordChangedAt'
+  });
   this.slug = slugify(this.name, {
     lower: true,
   });
