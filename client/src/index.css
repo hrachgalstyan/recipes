@@ -262,6 +262,28 @@ a {
   fill: #55c57a !important;
 }
 
+.pagination {
+  display: flex !important;
+  justify-content: center !important;
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}
+
+.page-link {
+  color: var(--mainGreen);
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: var(--mainGreen);
+  border: 1px solid var(--mainGreen);
+}
+
+.page-item:hover .page-link {
+  color: var(--mainGreen);
+}
+
 .footer-details {
   background: #55c57a !important;
 }

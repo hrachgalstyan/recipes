@@ -14,7 +14,7 @@ export const ShowAlert = (type, msg) => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      className: "d-flex justify-content-center align-items-center pl-3 mt-2"
+      className: "d-flex justify-content-center align-items-center pl-3 mt-2 mx-3 mx-sm-0"
       });
     return (
       <div>
@@ -40,7 +40,7 @@ export const ShowAlert = (type, msg) => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      className: "d-flex justify-content-center align-items-center pl-3 mt-2"
+      className: "d-flex justify-content-center align-items-center pl-3 mt-2 mx-3 mx-sm-0"
       });
     return (
       <div>

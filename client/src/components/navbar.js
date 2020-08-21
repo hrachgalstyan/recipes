@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {FaAlignRight} from 'react-icons/fa';
 import {UserContext} from '../context/user';
 import {ShowAlert} from './alert';
+import axios from 'axios';
 import image from '../assets/Recipes.svg';
 import defaultImg from '../assets/default.jpg';
 
@@ -15,12 +16,23 @@ export default function Navbar() {
   };
 
   async function logOut() {
-    localStorage.removeItem('name');
-    localStorage.removeItem('jwt');
-    ShowAlert('error', `😊 Մենք կսպասենք քեզ։`)
-    window.setTimeout(() => {
-      window.location.assign('/');
-    }, 1500);
+    axios({
+      url: '/api/v1/users/logout',
+      method: 'GET'
+    })
+      .then((response) => {
+        if(response.data.status === 'success'){
+          localStorage.removeItem('name');
+          localStorage.removeItem('jwt');
+          ShowAlert('error', `😊 Մենք կսպասենք քեզ։`)
+          window.setTimeout(() => {
+            window.location.assign('/');
+          }, 1500);
+        }
+      })
+      .catch((err) => {
+        ShowAlert('error', `❌ ${err.response.data.message}`);
+      });
   }
 
   if(user !== null) {
